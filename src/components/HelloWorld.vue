@@ -10,7 +10,7 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
-  name: 'home',
+  name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
