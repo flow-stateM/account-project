@@ -1,9 +1,11 @@
 <template>
     <div class="indexWrap">
+        <topnav></topnav>
     </div>
 </template>
 
 <script>
+import topnav from '@/components/TopNav'
 export default {
   name: 'home',
   data () {
@@ -17,6 +19,9 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss">
+body{
+    .indexWrap{
+    }
+}
 </style>
