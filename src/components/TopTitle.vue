@@ -1,0 +1,88 @@
+<template>
+    <header class="topTitle">
+        <div class="topFix">
+            <div class="topContent clear">
+                <router-link :to="{name:'home'}">
+                    <div class="fl logo"><img src="../assets/images/logo2.png" alt="logo"></div>
+                </router-link>
+                <div class="fr nav">
+                    <el-menu
+                    :default-active="nowPath"
+                    class="el-menu-demo"
+                    :router="true"
+                    mode="horizontal"
+                    @select="handleSelect"
+                    text-color="#000"
+                    active-text-color="#11d2c0">
+                    <el-menu-item index="/">首页</el-menu-item>
+                    <el-menu-item index="/account">账目中心</el-menu-item>
+                    <el-submenu index="/user">
+                        <template slot="title">个人中心</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-submenu index="2-4">
+                        <!-- <template slot="title">选项4</template>
+                        <el-menu-item index="2-4-1">选项1</el-menu-item> -->
+                        </el-submenu>
+                    </el-submenu>
+                    <el-menu-item index="/intro">功能介绍</el-menu-item>
+                    </el-menu>
+                </div>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script>
+    export default {
+        name:'TopTitle',
+        data(){
+            return {
+            }
+        },
+        methods:{
+            handleSelect:function(index){
+            }
+        },
+        computed:{
+            nowPath:function(){
+                return this.$route.path
+            }
+        },
+    }
+</script>
+
+<style scoped lang="scss">
+.el-menu--horizontal{
+    border-bottom-color:#f2f0f0;
+}
+.topTitle{
+    height: 61px;
+    .topFix{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-bottom: 1px solid #f2f0f0;
+        background: #ffffff;
+        .topContent{
+            width: 1024px;
+            height: 100%;
+            margin: 0 auto;
+            .logo{
+                display: inline-flex;
+                height: 100%;
+                align-items: center;
+                align-content: center;
+                img{
+                    width: 125px;
+                    height: 32px;
+                }
+            }
+            .nav{
+                height: 100%;
+            }
+        }
+    }
+}
+</style>
