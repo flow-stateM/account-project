@@ -49,3 +49,7 @@
 3.vue-router官方文档中推荐的监听路由变化的方法是使用watch或者导航守卫，但我的项目中（目前）使用的是computed监听route.path，发现也是可以的
 
 4.饿了么的导航菜单组件(NavMenu)的default-active会与index进行完全匹配，如果没有找到对应的标签，则还会维持原来的active状态。
+
+5.背景图中引入静态图片 使用 '~@/abc/def'的形式即可
+
+6.video标签引入视频文件时需要去url-loader配置项中将相应格式配置在匹配正则表达式中

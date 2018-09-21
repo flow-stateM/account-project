@@ -157,7 +157,7 @@
             }
           }
           this.draw()
-        }, 10)
+        }, 8)
       },
     },
     beforeDestory() {
