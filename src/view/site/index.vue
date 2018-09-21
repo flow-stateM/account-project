@@ -1,27 +1,34 @@
 <template>
-    <div class="indexWrap">
-        <topnav></topnav>
+    <div class="wrap">
+        <Toptitle></Toptitle>
+        <section class="main">
+            <transition  name="el-fade-in-linear" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </section>
     </div>
 </template>
 
 <script>
-import topnav from '@/components/TopNav'
+import Toptitle from '@/components/TopTitle'
 export default {
-  name: 'home',
-  data () {
-    return {
+    name: 'home',
+    components:{
+        Toptitle
+    },
+    data () {
+        return {
+        }
+    },
+    methods:{
+    },
+    computed:{
     }
-  },
-  methods:{
-  },
-  computed:{
-  }
 }
 </script>
 
 <style lang="scss">
-body{
-    .indexWrap{
-    }
+.wrap{
+    background:#f8fdff;
 }
 </style>

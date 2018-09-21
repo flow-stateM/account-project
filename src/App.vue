@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-            <transition>
-                <router-view/>
-            </transition>
+        <router-view/>
     </div>
 </template>
 
@@ -15,5 +13,16 @@ export default {
 <style lang="scss">
 body{
     margin: 0;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clear:after{
+    content: '';
+    display: block;
+    clear: both;
 }
 </style>
