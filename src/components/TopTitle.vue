@@ -66,7 +66,8 @@
         border-bottom: 1px solid #f2f0f0;
         background: #ffffff;
         .topContent{
-            width: 1024px;
+            width: 80%;
+            min-width: 1024px;
             height: 100%;
             margin: 0 auto;
             .logo{

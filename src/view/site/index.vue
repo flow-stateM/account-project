@@ -6,15 +6,18 @@
                 <router-view></router-view>
             </transition>
         </section>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
 import Toptitle from '@/components/TopTitle'
+import Footer from '@/components/Footer'
 export default {
     name: 'home',
     components:{
-        Toptitle
+        Toptitle,
+        Footer
     },
     data () {
         return {
