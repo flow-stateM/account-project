@@ -17,6 +17,7 @@ html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input,
 }
 body{
     font-family: "Microsoft YaHei";
+    user-select: none;
 }
 ul,ol {
     list-style: none;

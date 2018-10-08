@@ -26,6 +26,16 @@
                     </el-submenu>
                     <el-menu-item index="/intro">功能介绍</el-menu-item>
                     </el-menu>
+                    <div class="switch-wrap">
+                        是否开启动画
+                        <!-- 用于降低系统资源消耗 -->
+                        <el-switch
+                            style="margin-left:4px"
+                            v-model="animate"
+                            active-color="#13ce66"
+                            inactive-color="#ff4949">
+                        </el-switch>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,11 +51,27 @@
         },
         methods:{
             handleSelect:function(index){
-            }
+            },
         },
         computed:{
             nowPath:function(){
                 return this.$route.path
+            },
+            animate:{
+                get:function(){
+                    return this.$store.state.animate
+                },
+                set:function(newValue){
+                    this.$store.commit('changeAnimate',newValue)
+                    // 改变后提示用户
+                    this.$notify({
+                        title: '提示',
+                        message: newValue?'动画开启':'动画关闭',
+                        type: newValue?'success':'warning',
+                        showClose: false,
+                        offset:60
+                    });
+                }
             }
         },
     }
@@ -65,6 +91,7 @@
         left: 0;
         border-bottom: 1px solid #f2f0f0;
         background: #ffffff;
+        z-index: 10;
         .topContent{
             width: 80%;
             min-width: 1024px;
@@ -82,6 +109,16 @@
             }
             .nav{
                 height: 100%;
+                display: flex;
+                align-content: center;
+                align-items: center;
+                .switch-wrap{
+                    display: inline-flex;
+                    font-size: 14px;
+                    align-content: center;
+                    align-items: center;
+                    border-bottom: 1px solid transparent;
+                }
             }
         }
     }

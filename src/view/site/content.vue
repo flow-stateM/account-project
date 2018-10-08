@@ -1,8 +1,9 @@
 <template>
-    <section class="index-content">
+    <section :class="['index-content',animate?'':'no-animate']">
         <div class="contain1-wrap">
-            <star></star>
-            <div class="contain1">
+            <star v-if="animate"></star>
+            <!-- 由于流星花园背景消耗资源较大，使用是否开启动画控制 -->
+            <div class="contain1 clear">
                 <div class="fl intro">
                     <div class="tip-pop-wrap">
                         <p class="tip-pop">记账理财</p>
@@ -23,24 +24,76 @@
                 </div>
             </div>
         </div>
-        <div class="contain2-wrap"></div>
+        <div class="contain2-wrap">
+            <div class="contain2 clear">
+                <div class="fl"></div>
+                <div class="fr">
+                    <div class="tag-wrap" v-for="item in tags" :key="item.id">
+                        <sitetag v-bind="item"></sitetag>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
     import star from '@/components/StarBackground'
+    import sitetag from '@/components/Sitetag'
 
     export default {
         name:'IndexContent',
         components:{
-            star
+            star,
+            sitetag
         },
-        data(){return{
-            playing:false
-        }},
+        data(){
+            return{
+                playing:false,
+                tags:[
+                    {
+                        id:1,
+                        icon:require('@/assets/images/icons/item1.png'),
+                        background:'#11d2c0',
+                        tagname:'日常'
+                    },{
+                        id:2,
+                        icon:require('@/assets/images/icons/item2.png'),
+                        background:'#ffd997',
+                        tagname:'家庭'
+                    },{
+                        id:3,
+                        icon:require('@/assets/images/icons/item3.png'),
+                        background:'#ffbd51',
+                        tagname:'旅行'
+                    },{
+                        id:4,
+                        icon:require('@/assets/images/icons/item4.png'),
+                        background:'#0ca820',
+                        tagname:'校园'
+                    },{
+                        id:5,
+                        icon:require('@/assets/images/icons/item5.png'),
+                        background:'#804936',
+                        tagname:'装修'
+                    },{
+                        id:6,
+                        icon:require('@/assets/images/icons/item6.png'),
+                        background:'#f61681',
+                        tagname:'结婚'
+                    }
+                ],
+            }
+        },
         methods:{
             playVideo:function(){
                 this.playing = true;
+            }
+        },
+        computed:{
+            animate(){
+                return this.$store.state.animate
             }
         }
     }
@@ -57,7 +110,7 @@
         min-width: 1024px;
         height: 540px;
         margin: 0 auto;
-        background:#f8fdff;
+        // background:#f8fdff;
         position: relative;
         z-index: 1;
         .intro{
@@ -93,7 +146,7 @@
                 height: 517px;
                 position: absolute;
                 top: 15%;
-                left: 55%;
+                left: 50%;
                 transform: translate(-50%,0);
                 background-image: url('~@/assets/images/phone.png');
                 background-position: center;
@@ -117,7 +170,6 @@
                     background-repeat: no-repeat;
                     cursor: pointer;
                     transform: scale(1);
-                    // animation: smaller 0.3s ease forwards;
                     &:hover{
                         animation: bigger 0.5s ease forwards;
                     }
@@ -129,6 +181,33 @@
                     left: 15px;
                     top: 58px;
                 }
+            }
+        }
+    }
+}
+
+.contain2-wrap{
+    background-color: rgb(241,241,241);
+    .contain2{
+        width: 80%;
+        min-width: 1024px;
+        padding: 65px 0;
+        margin: 0 auto;
+        .fl{
+            width: 50%;
+        }
+        .fr{
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: -25px;
+            .tag-wrap{
+                width: 33%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin-top: 25px;
             }
         }
     }
@@ -148,6 +227,15 @@
 
 .ldot,.sdot{
     animation: rotate360 30s linear infinite;
+}
+
+.no-animate{
+    .ldot{
+        animation: none !important;
+    }
+    .sdot{
+        animation: none !important;
+    }
 }
 
 @keyframes rotate360 {

@@ -9,7 +9,7 @@
     props: {
       point: {
         type: Number,
-        default: 15 // 生成的星星（点）的个数, 默认25个
+        default: 35 // 生成的星星（点）的个数, 默认25个
       },
       lineColor: {
         type: String,
@@ -97,9 +97,10 @@
             this.context,
             this.rangeRadom(this.docWidth, 0),
             this.rangeRadom(this.docHeight, 0),
-            this.rangeRadom(15, 2),
-            this.rangeRadom(10, -10)/40,
-            this.rangeRadom(10, -10)/40
+            // this.rangeRadom(15, 2),
+            8,
+            this.rangeRadom(10, -10)/20,
+            this.rangeRadom(10, -10)/20
           ))
         }
       },
@@ -160,7 +161,7 @@
         }, 8)
       },
     },
-    beforeDestory() {
+    beforeDestroy() {
       // 记得摧毁定时器
       clearInterval(this.timer)
     }
